@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.database.User;
+import com.example.dto.UserDto;
 import com.example.repositories.UserRepository;
 
 @Service
@@ -19,5 +20,13 @@ public class UserService {
         List<User> data = userRepository.findAll();
         System.out.println(data);
         return data;
+    }
+
+    public User create(UserDto userDto) {
+        User data = new User();
+
+        data.setName(userDto.getName());
+
+        return userRepository.save(data);
     }
 }
